@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Navigation } from "lucide-react";
 import type { Milestone } from "@/types/milestone";
-import { CATEGORY_CONFIG } from "@/types/milestone";
 
 export default function MapPage() {
   const [milestones, setMilestones] = useState<Milestone[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Milestone | null>(null);
 
   useEffect(() => {
@@ -16,7 +14,7 @@ export default function MapPage() {
       .then((res) => res.json())
       .then((data) => setMilestones(data))
       .catch(console.error)
-      .finally(() => setLoading(false));
+      .finally(() => {});
   }, []);
 
   const locationMilestones = milestones.filter((m) => m.locationName);

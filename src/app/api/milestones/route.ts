@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
   const year = searchParams.get("year");
   const tag = searchParams.get("tag");
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const where: any = { userId: session.user.id };
   if (category) where.category = category;
   if (year) {
@@ -118,6 +119,7 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "无权限" }, { status: 403 });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateData: any = { ...data };
   if (data.date) updateData.date = new Date(data.date);
 

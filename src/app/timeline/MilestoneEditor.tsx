@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { X, Calendar, MapPin, Tag, Heart, Lock, ImagePlus } from "lucide-react";
+import { X, Calendar, MapPin, Tag, Heart, Lock } from "lucide-react";
 import type { Milestone, MilestoneFormData } from "@/types/milestone";
 import { CATEGORY_CONFIG, MOOD_OPTIONS, type MilestoneCategory } from "@/types/milestone";
 
@@ -18,7 +17,6 @@ export default function MilestoneEditor({
   onClose,
   onSave,
 }: MilestoneEditorProps) {
-  const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [form, setForm] = useState<MilestoneFormData>({
     title: milestone?.title || "",
@@ -130,7 +128,7 @@ export default function MilestoneEditor({
               <label className="block text-sm font-medium text-ink-300 mb-1.5">日期精度</label>
               <select
                 value={form.datePrecision}
-                onChange={(e) => setForm({ ...form, datePrecision: e.target.value as any })}
+                onChange={(e) => setForm({ ...form, datePrecision: e.target.value as MilestoneFormData["datePrecision"] })}
                 className="input-field"
               >
                 <option value="day">精确到日</option>

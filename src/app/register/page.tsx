@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { UserPlus, Mail, Lock, User } from "lucide-react";
-import bcrypt from "bcryptjs";
 
 export default function RegisterPage() {
   const router = useRouter();

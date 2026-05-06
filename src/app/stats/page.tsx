@@ -16,7 +16,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { Milestone } from "@/types/milestone";
-import { CATEGORY_CONFIG, MOOD_OPTIONS } from "@/types/milestone";
+import { CATEGORY_CONFIG } from "@/types/milestone";
 
 const PIE_COLORS = [
   "#4ecdc4",
