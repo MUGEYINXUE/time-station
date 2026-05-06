@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --background: #1a1a2e;
+  --foreground: #f5f0e8;
+  --river: #4ecdc4;
+  --memory: #ffd93d;
+  --card-bg: rgba(26, 26, 46, 0.8);
+  --card-border: rgba(78, 205, 196, 0.15);
+}
+
+@layer base {
+  * {
+    @apply border-ink-800;
+  }
+
+  body {
+    @apply bg-ink-950 text-ink-50 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(78, 205, 196, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(255, 217, 61, 0.02) 0%, transparent 50%);
+  }
+
+  ::selection {
+    @apply bg-river-400/30 text-ink-50;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-river-800 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-river-600;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-ink-900/60 backdrop-blur-xl border border-river-400/10 rounded-2xl;
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(78, 205, 196, 0.05);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    @apply border-river-400/25;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(78, 205, 196, 0.1),
+      0 0 20px rgba(78, 205, 196, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .text-gradient-river {
+    @apply bg-gradient-to-r from-river-400 to-river-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-memory-300 to-memory-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-mixed {
+    @apply bg-gradient-to-r from-river-400 via-memory-300 to-mood-love bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2.5 bg-river-500 text-ink-950 font-medium rounded-xl
+           transition-all duration-300 hover:bg-river-400 hover:shadow-lg hover:shadow-river-500/20
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 border border-river-400/30 text-river-400 font-medium rounded-xl
+           transition-all duration-300 hover:bg-river-400/10 hover:border-river-400/50
+           active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-ink-900/50 border border-ink-700/50 rounded-xl text-ink-50
+           placeholder-ink-500 focus:outline-none focus:border-river-400/50 focus:ring-1 focus:ring-river-400/20
+           transition-all duration-200;
+  }
+
+  .connector-line {
+    @apply absolute w-px bg-gradient-to-b from-river-400/40 via-river-400/20 to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-in {
+    animation: slide-up 0.5s ease-out, fade-in 0.6s ease-out;
+  }
+}
