@@ -20,7 +20,7 @@ export default function RiverParticles() {
         particles: {
           number: {
             value: 80,
-            density: { enable: true, area: 900 },
+            density: { enable: true, factor: 900 },
           },
           color: {
             value: ["#4ecdc4", "#35b8b0", "#6dd4c8", "#ffd93d"],
