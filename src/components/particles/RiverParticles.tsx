@@ -1,45 +1,39 @@
 "use client";
 
-import { useCallback } from "react";
-import Particles from "@tsparticles/react";
+import { useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
 
 export default function RiverParticles() {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
+
+  if (!init) return null;
 
   return (
     <Particles
       id="river-particles"
-      init={particlesInit}
       options={{
         fullScreen: { enable: true, zIndex: -1 },
         fpsLimit: 60,
         particles: {
-          number: {
-            value: 80,
-          },
-          color: {
-            value: ["#4ecdc4", "#35b8b0", "#6dd4c8", "#ffd93d"],
-          },
+          number: { value: 80 },
+          color: { value: ["#4ecdc4", "#35b8b0", "#6dd4c8", "#ffd93d"] },
           shape: { type: "circle" },
           opacity: {
             value: { min: 0.1, max: 0.4 },
-            animation: {
-              enable: true,
-              speed: 0.5,
-              sync: false,
-            },
+            animation: { enable: true, speed: 0.5, sync: false },
           },
           size: {
             value: { min: 1, max: 4 },
-            animation: {
-              enable: true,
-              speed: 1,
-              sync: false,
-            },
+            animation: { enable: true, speed: 1, sync: false },
           },
           move: {
             enable: true,
@@ -59,20 +53,11 @@ export default function RiverParticles() {
         },
         interactivity: {
           events: {
-            onHover: {
-              enable: true,
-              mode: "grab",
-            },
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
+            onHover: { enable: true, mode: "grab" },
+            onClick: { enable: true, mode: "push" },
           },
           modes: {
-            grab: {
-              distance: 180,
-              links: { opacity: 0.15 },
-            },
+            grab: { distance: 180, links: { opacity: 0.15 } },
             push: { quantity: 2 },
           },
         },
