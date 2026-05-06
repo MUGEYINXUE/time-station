@@ -20,7 +20,6 @@ export default function RiverParticles() {
         particles: {
           number: {
             value: 80,
-            density: { enable: true, factor: 900 },
           },
           color: {
             value: ["#4ecdc4", "#35b8b0", "#6dd4c8", "#ffd93d"],
@@ -49,15 +48,6 @@ export default function RiverParticles() {
             random: false,
             straight: false,
             outModes: { default: "out" },
-            angle: { value: 10, offset: 5 },
-            path: {
-              enable: true,
-              options: {
-                size: 10,
-                draw: false,
-                delay: { value: 0 },
-              },
-            },
           },
           links: {
             enable: true,
