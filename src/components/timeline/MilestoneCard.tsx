@@ -90,6 +90,7 @@ export default function MilestoneCard({
                 key={m.id}
                 className="relative aspect-square rounded-lg overflow-hidden bg-ink-800"
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={m.url}
                   alt={m.caption || ""}
